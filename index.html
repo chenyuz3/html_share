@@ -1,0 +1,1227 @@
+<!-- path=Nvidia 1Q26 Earnings Summary.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nvidia 1Q26 业绩概览</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom colors for Tailwind */
+        .highlight-num {
+            color: #6495ED; /* CornflowerBlue */
+            font-weight: bold;
+        }
+        .main-orange {
+            color: #FF8C00; /* DarkOrange */
+        }
+        .bg-main-orange-light {
+            background-color: #FFF5EE; /* Seashell, a very light orange */
+        }
+        .border-main-orange {
+            border-color: #FF8C00;
+        }
+        /* Custom styles for scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Custom list styles for nested lists */
+        ul.list-circle li::marker {
+            content: "○ ";
+            color: #FF8C00; /* Orange color for nested list markers */
+        }
+
+        /* Ensure content within blocks doesn't overflow */
+        .content-block {
+            min-width: 800px; /* Adjust based on typical content width + buffer */
+            padding: 24px; /* p-6 */
+            margin-bottom: 32px; /* mb-8 */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+        .content-block p, .content-block ul, .content-block ol, .content-block table {
+            max-width: 100%; /* Ensure text and tables don't exceed container width */
+            word-wrap: break-word; /* Allow long words to break */
+        }
+        .content-block table {
+            table-layout: auto; /* Allow table cells to size automatically */
+            width: 100%; /* Ensure table takes full width of its container */
+        }
+        .content-block td, .content-block th {
+            padding: 8px; /* Add padding to table cells */
+            vertical-align: top; /* Align content to top in cells */
+        }
+        .chart-container {
+            position: relative;
+            height: 256px; /* h-64 */
+            width: 100%; /* Ensure chart container takes full width */
+            max-width: 400px; /* Limit chart width for better readability if needed */
+            margin: 0 auto; /* Center charts */
+        }
+        /* Specific adjustments for text size to save space */
+        .text-sm {
+            font-size: 0.875rem; /* Default for text-sm */
+        }
+        .text-xs {
+            font-size: 0.75rem; /* Default for text-xs */
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 font-sans flex h-screen overflow-hidden">
+    <!-- Sidebar Navigation -->
+    <div class="fixed top-0 left-0 h-full w-64 bg-gray-50 p-6 overflow-y-auto shadow-lg z-10">
+        <h2 class="text-xl font-bold mb-6 main-orange">目录</h2>
+        <nav>
+            <ul class="space-y-3 text-sm">
+                <li><a href="#key-observation" class="block py-2 px-3 rounded hover:bg-gray-200 transition-colors duration-200">关键观察</a></li>
+                <li><a href="#key-financial-figures" class="block py-2 px-3 rounded hover:bg-gray-200 transition-colors duration-200">关键财务数据</a>
+                    <ul class="ml-4 mt-2 space-y-2">
+                        <li><a href="#financial-figures-table" class="block py-1 px-2 rounded hover:bg-gray-200 transition-colors duration-200 text-xs">财务数据概览表</a></li>
+                    </ul>
+                </li>
+                <li><a href="#segments-kpis" class="block py-2 px-3 rounded hover:bg-gray-200 transition-colors duration-200">业务分部与关键指标</a>
+                    <ul class="ml-4 mt-2 space-y-2">
+                        <li><a href="#segments-kpis-table" class="block py-1 px-2 rounded hover:bg-gray-200 transition-colors duration-200 text-xs">业务分部与指标表</a></li>
+                    </ul>
+                </li>
+                <li><a href="#outlooks-guidance" class="block py-2 px-3 rounded hover:bg-gray-200 transition-colors duration-200">展望与指引</a>
+                    <ul class="ml-4 mt-2 space-y-2">
+                        <li><a href="#guidance-table" class="block py-1 px-2 rounded hover:bg-gray-200 transition-colors duration-200 text-xs">指引数据表</a></li>
+                    </ul>
+                </li>
+                <li><a href="#other-important-information" class="block py-2 px-3 rounded hover:bg-gray-200 transition-colors duration-200">其他重要信息</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 ml-64 p-8 overflow-y-auto">
+        <h1 class="text-3xl font-extrabold mb-8 main-orange">Nvidia 1Q26 业绩概览</h1>
+
+        <!-- Key Observation Block -->
+        <div id="key-observation" class="content-block bg-gray-50 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-2xl font-bold mb-4 main-orange">关键观察</h2>
+            <p class="text-sm leading-relaxed mb-4">
+                Nvidia 报告了其2026财年第一季度业绩，营收为<span class="highlight-num">$440.62亿</span> (yoy <span class="highlight-num">+69%</span>, qoq <span class="highlight-num">+12%</span>)，超出了公司自身指引的<span class="highlight-num">$430亿</span> (±<span class="highlight-num">2%</span>)及市场一致预期的<span class="highlight-num">$433.7亿</span>。Non-GAAP稀释后EPS为<span class="highlight-num">$0.81</span> (yoy <span class="highlight-num">+33%</span>, qoq <span class="highlight-num">-9%</span>)，若剔除H20芯片相关的<span class="highlight-num">$45亿</span>费用及相关税费影响，则为<span class="highlight-num">$0.96</span>，这与市场预期的<span class="highlight-num">$0.88</span>相比表现复杂，因预期未完全包含此一次性费用的具体影响。数据中心业务依旧是增长引擎，营收达<span class="highlight-num">$391.12亿</span> (yoy <span class="highlight-num">+73%</span>, qoq <span class="highlight-num">+10%</span>)，主要得益于Large Language Models、推荐引擎及生成式与代理式AI应用的强劲需求，以及Blackwell架构产品的加速上量。游戏业务营收创纪录，达<span class="highlight-num">$37.63亿</span> (yoy <span class="highlight-num">+42%</span>, qoq <span class="highlight-num">+48%</span>)。
+            </p>
+            <p class="text-sm leading-relaxed mb-4">
+                根据Colette Kress (NVIDIA EVP & CFO)在业绩电话会上的回顾，Q1总营收超出预期，尽管运营环境充满挑战，AI工作负载已强劲转向推理（inference），AI工厂建设正驱动显著营收，客户承诺坚定。
+            </p>
+            <p class="text-sm leading-relaxed mb-4">
+                然而，US government于<span class="highlight-num">2025年4月9日</span>通知Nvidia，其H20产品出口中国市场需要许可证，导致公司Q1计提<span class="highlight-num">$45亿</span>与H20过剩库存和采购承诺相关的费用。此费用显著影响了毛利率，报告的Non-GAAP毛利率为<span class="highlight-num">61.0%</span>，若不计此费用则为<span class="highlight-num">71.3%</span>，略高于公司先前指引的<span class="highlight-num">71.0%</span> (±<span class="highlight-num">50</span>bps)。
+            </p>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">H20出口管制详情 (来自业绩电话会管理层评论)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li><span class="highlight-num">4月9日</span>，美国政府发布了针对H20（专为中国市场设计的数据中心GPU）的新出口管制。H20是经前任政府批准销售的，已上市一年多，且在中国以外没有市场。新管制未提供宽限期以供NVIDIA清空库存。</li>
+                    <li>Q1确认了<span class="highlight-num">$4,600,000,000</span>的H20收入（发生在<span class="highlight-num">4月9日</span>之前），但也确认了<span class="highlight-num">$4,500,000,000.0</span>的费用，用于减记与<span class="highlight-num">4月9日</span>前收到的订单相关的库存和采购义务。</li>
+                    <li>由于新出口管制，Q1未能发运<span class="highlight-num">$2,500,000,000</span>的H20收入。因此，若无管制，Q1 H20总收入本应为<span class="highlight-num">$70亿</span> (来自Q&A Colette Kress澄清)。</li>
+                    <li><span class="highlight-num">$4,500,000,000</span>的费用低于最初预期，因为部分材料得以再利用。</li>
+                    <li>公司仍在评估符合美国政府修订后出口管制规则的数据中心计算产品的有限供应选项。</li>
+                    <li>失去中国AI加速器市场（预计将增长至近<span class="highlight-num">$50,000,000,000</span>）将对公司未来业务产生重大不利影响，并有利于其在中国和全球的外国竞争对手。</li>
+                    <li>Jensen Huang在Q&A中表示，新的限制使得Nvidia几乎不可能为任何生产用途进一步削减Hopper的性能，对Hopper而言“已是穷途末路”(kind of the end of the road for Hopper)，目前没有任何新（替代）产品可以宣布，但正在考虑和思考，当前的限制非常严格。</li>
+                </ul>
+            </div>
+            <p class="text-sm leading-relaxed mb-4">
+                展望2026财年第二季度，Nvidia预计营收为<span class="highlight-num">$450亿</span> (±<span class="highlight-num">2%</span>)，低于市场一致预期的<span class="highlight-num">$464亿</span>，主要反映了因出口管制导致H20产品约<span class="highlight-num">$80亿</span>的营收损失。Non-GAAP毛利率指引为<span class="highlight-num">72.0%</span> (±<span class="highlight-num">50</span>bps)，与市场预期基本一致，公司仍目标在今年晚些时候实现<span class="highlight-num">70%</span>区间中段的毛利率。卖方预览普遍预料到了H20禁令对Q1毛利率的压力和Q2营收指引的负面影响。
+            </p>
+            <div class="bg-gray-100 p-4 rounded-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">Q2指引解读 (来自业绩电话会管理层评论及Q&A)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li>Colette Kress指出，Q2的指引考虑了若无出口管制，H20本可能有的约<span class="highlight-num">$8,000,000,000</span>订单。Blackwell在众多客户中的增长以及满足客户需求的持续供应增长，共同构成了公司提供该指引的基础。</li>
+                    <li>预计所有平台都将实现温和的环比增长。</li>
+                    <li>在数据中心业务方面，预计Blackwell的持续上量将被中国市场收入的下降部分抵消。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Key Financial Figures Block -->
+        <div id="key-financial-figures" class="content-block bg-gray-50 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-2xl font-bold mb-4 main-orange">关键财务数据</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q1 FY26 营收对比</h3>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q1 FY26 毛利率对比 (Non-GAAP)</h3>
+                    <div class="chart-container">
+                        <canvas id="gmChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q1 FY26 EPS对比 (Non-GAAP)</h3>
+                    <div class="chart-container">
+                        <canvas id="epsChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q1 FY26 股东回报构成</h3>
+                    <div class="chart-container">
+                        <canvas id="shareholderReturnChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-sm leading-relaxed mb-4">
+                <p class="mb-2"><strong>1Q26总营收</strong>：报告为<span class="highlight-num">$440.62亿</span>，yoy <span class="highlight-num">+69%</span>，qoq <span class="highlight-num">+12%</span>。</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>高于公司指引的 <span class="highlight-num">$430亿</span> (±<span class="highlight-num">2%</span>，即<span class="highlight-num">$421.4亿</span> - <span class="highlight-num">$438.6亿</span>)。</li>
+                    <li>高于市场一致预期的 <span class="highlight-num">$433.67亿</span>。</li>
+                    <li>(来自业绩电话会管理层评论) Colette Kress: Q1总营收达到<span class="highlight-num">$44,000,000,000</span>，同比增长<span class="highlight-num">69%</span>，超出预期，尽管运营环境充满挑战。</li>
+                </ul>
+                <p class="mb-2"><strong>1Q26 GAAP业绩</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>毛利率 (GM)：<span class="highlight-num">60.5%</span> (vs. Q4FY25 <span class="highlight-num">73.0%</span>, Q1FY25 <span class="highlight-num">78.4%</span>)。</li>
+                    <li>运营费用 (OpEx)：<span class="highlight-num">$50.30亿</span> (yoy <span class="highlight-num">+44%</span>, qoq <span class="highlight-num">+7%</span>)。</li>
+                    <li>运营收入 (OpInc)：<span class="highlight-num">$216.38亿</span> (yoy <span class="highlight-num">+28%</span>, qoq <span class="highlight-num">-10%</span>)。</li>
+                    <li>净利润 (Net Income)：<span class="highlight-num">$187.75亿</span> (yoy <span class="highlight-num">+26%</span>, qoq <span class="highlight-num">-15%</span>)。</li>
+                    <li>稀释后每股收益 (Diluted EPS)：<span class="highlight-num">$0.76</span> (yoy <span class="highlight-num">+27%</span>, qoq <span class="highlight-num">-15%</span>)。</li>
+                </ul>
+                <p class="mb-2"><strong>1Q26 Non-GAAP业绩</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>毛利率 (GM)：<span class="highlight-num">61.0%</span> (vs. Q4FY25 <span class="highlight-num">73.5%</span>, Q1FY25 <span class="highlight-num">78.9%</span>)。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>公司指引为 <span class="highlight-num">71.0%</span> (±<span class="highlight-num">50</span>bps)，但此指引未包含后续H20出口限制产生的费用影响。</li>
+                            <li>市场一致预期为 <span class="highlight-num">71.04%</span>。</li>
+                            <li>若剔除<span class="highlight-num">$45亿</span>的H20相关费用，Non-GAAP GM为<span class="highlight-num">71.3%</span>，略高于公司原指引上限。卖方预览中 (BofA, HSBC, UBS) 曾预计包含减记后的毛利率可能降至<span class="highlight-num">58%</span>-<span class="highlight-num">58.5%</span>的水平，实际<span class="highlight-num">61.0%</span>好于此悲观预期。</li>
+                        </ul>
+                    </li>
+                    <li>运营费用 (OpEx)：<span class="highlight-num">$35.83亿</span> (yoy <span class="highlight-num">+43%</span>, qoq <span class="highlight-num">+6%</span>)。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>公司指引为约 <span class="highlight-num">$36亿</span>。</li>
+                            <li>市场一致预期为 <span class="highlight-num">$36.32亿</span>。</li>
+                        </ul>
+                    </li>
+                    <li>运营收入 (OpInc)：<span class="highlight-num">$232.75亿</span> (yoy <span class="highlight-num">+29%</span>, qoq <span class="highlight-num">-9%</span>)。</li>
+                    <li>净利润 (Net Income)：<span class="highlight-num">$198.94亿</span> (yoy <span class="highlight-num">+31%</span>, qoq <span class="highlight-num">-10%</span>)。</li>
+                    <li>稀释后每股收益 (Diluted EPS)：<span class="highlight-num">$0.81</span> (yoy <span class="highlight-num">+33%</span>, qoq <span class="highlight-num">-9%</span>)。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>市场一致预期为 <span class="highlight-num">$0.88</span>。</li>
+                            <li>若剔除<span class="highlight-num">$45亿</span>的H20相关费用及相关税费影响，Non-GAAP稀释后EPS为<span class="highlight-num">$0.96</span>。</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="mb-2"><strong>H20芯片出口限制影响</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>Nvidia于<span class="highlight-num">2025年4月9日</span>被US government告知其H20产品出口中国市场需要许可证。</li>
+                    <li>因此，Q1FY26计提了<span class="highlight-num">$45亿</span>与H20过剩库存和采购承诺相关的费用，因H20需求减少。</li>
+                    <li>在新的出口许可要求之前，Q1FY26的H20产品销售额为<span class="highlight-num">$46亿</span>。</li>
+                    <li>Nvidia在Q1未能发货额外的<span class="highlight-num">$25亿</span>的H20营收。</li>
+                    <li>CFO评论指出，<span class="highlight-num">$45亿</span>的费用低于最初预期，因为公司能够重新利用某些材料。</li>
+                </ul>
+                <p class="mb-2"><strong>其他财务信息</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>季度现金股利：将支付每股<span class="highlight-num">$0.01</span>的季度现金股利。</li>
+                    <li>现金、现金等价物和有价证券：<span class="highlight-num">$537亿</span>，较去年同期的<span class="highlight-num">$314亿</span>和上一季度的<span class="highlight-num">$432亿</span>均有增加。</li>
+                    <li>运营现金流：<span class="highlight-num">$274亿</span> (vs. Q1FY25 <span class="highlight-num">$153亿</span>, Q4FY25 <span class="highlight-num">$166亿</span>)。</li>
+                    <li>股东回报：Q1FY26共使用现金<span class="highlight-num">$143亿</span>，包括<span class="highlight-num">$141亿</span>的股票回购和<span class="highlight-num">$2.44亿</span>的现金股利。</li>
+                </ul>
+            </div>
+
+            <div id="financial-figures-table" class="mb-6">
+                <h3 class="text-lg font-semibold mb-2 main-orange">关键财务数据概览表</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-2 px-4 border-b text-left">Metrics (Non-GAAP unless specified)</th>
+                                <th class="py-2 px-4 border-b text-left">Q1 FY26 Actual</th>
+                                <th class="py-2 px-4 border-b text-left">Q1 FY26 Consensus</th>
+                                <th class="py-2 px-4 border-b text-left">Q1 FY26 Guidance</th>
+                                <th class="py-2 px-4 border-b text-left">YoY</th>
+                                <th class="py-2 px-4 border-b text-left">QoQ</th>
+                                <th class="py-2 px-4 border-b text-left">Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="py-2 px-4 border-b">Revenue ($M)</td><td class="py-2 px-4 border-b"><span class="highlight-num">44,062</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">43,367.13</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">43,000</span> (±<span class="highlight-num">2</span>%)</td><td class="py-2 px-4 border-b"><span class="highlight-num">+69</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+12</span>%</td><td class="py-2 px-4 border-b">超出指引和共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Gross Margin (%)</td><td class="py-2 px-4 border-b"><span class="highlight-num">61.0</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">71.04</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">71.0</span> (±<span class="highlight-num">50</span>bps)</td><td class="py-2 px-4 border-b"><span class="highlight-num">-17.9</span> pts</td><td class="py-2 px-4 border-b"><span class="highlight-num">-12.5</span> pts</td><td class="py-2 px-4 border-b">受H20费用影响；剔除后为<strong><span class="highlight-num">71.3</span>%</strong>，略超指引</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Gross Margin (GAAP, %)</td><td class="py-2 px-4 border-b"><span class="highlight-num">60.5</span></td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"><span class="highlight-num">70.6</span> (±<span class="highlight-num">50</span>bps)</td><td class="py-2 px-4 border-b"><span class="highlight-num">-17.9</span> pts</td><td class="py-2 px-4 border-b"><span class="highlight-num">-12.5</span> pts</td><td class="py-2 px-4 border-b">受H20费用影响</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Operating Expenses ($M)</td><td class="py-2 px-4 border-b"><span class="highlight-num">3,583</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">3,631.61</span></td><td class="py-2 px-4 border-b">~<span class="highlight-num">3,600</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+43</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+6</span>%</td><td class="py-2 px-4 border-b">略低于指引和共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Operating Income ($M)</td><td class="py-2 px-4 border-b"><span class="highlight-num">23,275</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">25,731.38</span></td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"><span class="highlight-num">+29</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">-9</span>%</td><td class="py-2 px-4 border-b">低于共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Net Income ($M)</td><td class="py-2 px-4 border-b"><span class="highlight-num">19,894</span></td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"><span class="highlight-num">+31</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">-10</span>%</td><td class="py-2 px-4 border-b"></td></tr>
+                            <tr><td class="py-2 px-4 border-b">Diluted EPS ($)</td><td class="py-2 px-4 border-b"><span class="highlight-num">0.81</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">0.88</span></td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"><span class="highlight-num">+33</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">-9</span>%</td><td class="py-2 px-4 border-b">低于共识；剔除H20费用影响后为<strong><span class="highlight-num">$0.96</span></strong></td></tr>
+                            <tr><td class="py-2 px-4 border-b">Diluted EPS (GAAP, $)</td><td class="py-2 px-4 border-b"><span class="highlight-num">0.76</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">0.80</span></td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"><span class="highlight-num">+27</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">-15</span>%</td><td class="py-2 px-4 border-b">(GAAP EPS con. from Bloomberg sheet)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">Q1 Fiscal 2026 Summary (Non-GAAP)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li>营收 <span class="highlight-num">$44,062</span>百万，同比增长 <span class="highlight-num">69%</span>，环比增长 <span class="highlight-num">12%</span>。</li>
+                    <li>毛利率为 <span class="highlight-num">61.0%</span>，同比下降 <span class="highlight-num">17.9</span> 个百分点，环比下降 <span class="highlight-num">12.5</span> 个百分点，主要受H20费用影响；剔除该费用后毛利率为 <span class="highlight-num">71.3%</span>。</li>
+                    <li>运营费用 <span class="highlight-num">$3,583</span>百万，同比增长 <span class="highlight-num">43%</span>，环比增长 <span class="highlight-num">6%</span>。</li>
+                    <li>运营收入 <span class="highlight-num">$23,275</span>百万，同比增长 <span class="highlight-num">29%</span>，环比下降 <span class="highlight-num">9%</span>。</li>
+                    <li>净利润 <span class="highlight-num">$19,894</span>百万，同比增长 <span class="highlight-num">31%</span>，环比下降 <span class="highlight-num">10%</span>。</li>
+                    <li>稀释后每股收益 <span class="highlight-num">$0.81</span>，同比增长 <span class="highlight-num">33%</span>，环比下降 <span class="highlight-num">9%</span>；剔除H20费用及相关税费影响后为 <span class="highlight-num">$0.96</span>。</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">Q1 Fiscal 2026 Summary (GAAP)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li>营收 <span class="highlight-num">$44,062</span>百万，同比增长 <span class="highlight-num">69%</span>，环比增长 <span class="highlight-num">12%</span>。</li>
+                    <li>毛利率为 <span class="highlight-num">60.5%</span>，同比下降 <span class="highlight-num">17.9</span> 个百分点，环比下降 <span class="highlight-num">12.5</span> 个百分点。</li>
+                    <li>运营费用 <span class="highlight-num">$5,030</span>百万，同比增长 <span class="highlight-num">44%</span>，环比增长 <span class="highlight-num">7%</span>。</li>
+                    <li>运营收入 <span class="highlight-num">$21,638</span>百万，同比增长 <span class="highlight-num">28%</span>，环比下降 <span class="highlight-num">10%</span>。</li>
+                    <li>净利润 <span class="highlight-num">$18,775</span>百万，同比增长 <span class="highlight-num">26%</span>，环比下降 <span class="highlight-num">15%</span>。</li>
+                    <li>稀释后每股收益 <span class="highlight-num">$0.76</span>，同比增长 <span class="highlight-num">27%</span>，环比下降 <span class="highlight-num">15%</span>。</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">NVIDIA CORPORATION CONDENSED CONSOLIDATED STATEMENTS OF INCOME (Unaudited)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li>截至<span class="highlight-num">2025年4月27日</span>的三个月（Q1 FY26），营收为<span class="highlight-num">$44,062</span>百万，去年同期为<span class="highlight-num">$26,044</span>百万。</li>
+                    <li>营收成本为<span class="highlight-num">$17,394</span>百万，远高于去年同期的<span class="highlight-num">$5,638</span>百万，主要由于H20相关费用。</li>
+                    <li>毛利润为<span class="highlight-num">$26,668</span>百万，高于去年同期的<span class="highlight-num">$20,406</span>百万。</li>
+                    <li>运营费用总计<span class="highlight-num">$5,030</span>百万 (R&D <span class="highlight-num">$3,989</span>百万, SG&A <span class="highlight-num">$1,041</span>百万)，高于去年同期的<span class="highlight-num">$3,497</span>百万。</li>
+                    <li>运营收入为<span class="highlight-num">$21,638</span>百万，高于去年同期的<span class="highlight-num">$16,909</span>百万。</li>
+                    <li>税前收入为<span class="highlight-num">$21,910</span>百万，所得税费用为<span class="highlight-num">$3,135</span>百万。</li>
+                    <li>净利润为<span class="highlight-num">$18,775</span>百万，高于去年同期的<span class="highlight-num">$14,881</span>百万。</li>
+                    <li>GAAP稀释后每股收益为<span class="highlight-num">$0.76</span>，去年同期为<span class="highlight-num">$0.60</span>。</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">NVIDIA CORPORATION CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li>截至<span class="highlight-num">2025年4月27日</span>，现金、现金等价物和有价证券总额为<span class="highlight-num">$53,691</span>百万，较上一季度末（<span class="highlight-num">2025年1月26日</span>）的<span class="highlight-num">$43,210</span>百万大幅增加。</li>
+                    <li>应收账款净额为<span class="highlight-num">$22,132</span>百万，较上一季度末的<span class="highlight-num">$23,065</span>百万有所下降。</li>
+                    <li>库存为<span class="highlight-num">$11,333</span>百万，较上一季度末的<span class="highlight-num">$10,080</span>百万有所增加。</li>
+                    <li>总资产为<span class="highlight-num">$125,254</span>百万，较上一季度末的<span class="highlight-num">$111,601</span>百万增加。</li>
+                    <li>总负债为<span class="highlight-num">$41,411</span>百万，较上一季度末的<span class="highlight-num">$32,274</span>百万增加，主要由于应付账款和其他流动负债增加。</li>
+                    <li>股东权益为<span class="highlight-num">$83,843</span>百万，较上一季度末的<span class="highlight-num">$79,327</span>百万增加。</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">NVIDIA CORPORATION CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li>截至<span class="highlight-num">2025年4月27日</span>的三个月，经营活动产生的净现金为<span class="highlight-num">$27,414</span>百万，远高于去年同期的<span class="highlight-num">$15,345</span>百万。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>净利润为<span class="highlight-num">$18,775</span>百万。</li>
+                            <li>主要调整项包括：股票薪酬费用<span class="highlight-num">$1,474</span>百万，递延所得税(<span class="highlight-num">$2,177</span>百万)，应计及其他流动负债增加<span class="highlight-num">$7,128</span>百万。</li>
+                        </ul>
+                    </li>
+                    <li>投资活动使用的净现金为<span class="highlight-num">$5,216</span>百万，主要用于购买有价证券(<span class="highlight-num">$6,546</span>百万)和物业设备及无形资产(<span class="highlight-num">$1,227</span>百万)。</li>
+                    <li>融资活动使用的净现金为<span class="highlight-num">$15,553</span>百万，主要用于股票回购(<span class="highlight-num">$14,095</span>百万)和支付股息(<span class="highlight-num">$244</span>百万)。</li>
+                    <li>期末现金及现金等价物为<span class="highlight-num">$15,234</span>百万。</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">NVIDIA CORPORATION RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES (Unaudited)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li><strong>Q1 FY26 GAAP与Non-GAAP差异主要调整项</strong>：
+                        <ul class="list-circle list-inside ml-4">
+                            <li>营收成本：剔除收购相关成本<span class="highlight-num">$123</span>百万和股票薪酬费用<span class="highlight-num">$64</span>百万。</li>
+                            <li>运营费用：剔除股票薪酬费用<span class="highlight-num">$1,410</span>百万和收购相关成本<span class="highlight-num">$37</span>百万。</li>
+                            <li>其他收入(费用)：剔除非市场化股权证券和公开持有股权证券的(收益)损失<span class="highlight-num">$175</span>百万。</li>
+                            <li>所得税影响：调整了<span class="highlight-num">$694</span>百万。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">Non-GAAP Gross Profit and Net Income (as adjusted to exclude H20 excess inventory and purchase obligation charges)</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li>GAAP毛利润<span class="highlight-num">$26,668</span>百万 (毛利率<span class="highlight-num">60.5%</span>)。</li>
+                    <li>剔除股票薪酬、收购相关等成本<span class="highlight-num">$190</span>百万，以及H20过剩库存和采购承诺费用<span class="highlight-num">$4,538</span>百万后，调整后的Non-GAAP毛利润为<span class="highlight-num">$31,396</span>百万 (毛利率<span class="highlight-num">71.3%</span>)。</li>
+                    <li>GAAP净利润<span class="highlight-num">$18,775</span>百万 (EPS <span class="highlight-num">$0.76</span>)。</li>
+                    <li>剔除所有Non-GAAP调整项（包括H20费用）税前影响<span class="highlight-num">$6,351</span>百万，及相关所得税影响(<span class="highlight-num">$1,491</span>百万)后，调整后的Non-GAAP净利润为<span class="highlight-num">$23,635</span>百万 (EPS <span class="highlight-num">$0.96</span>)。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Segments & KPIs Block -->
+        <div id="segments-kpis" class="content-block bg-gray-50 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-2xl font-bold mb-4 main-orange">业务分部与关键指标</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q1 FY26 各业务营收占比</h3>
+                    <div class="chart-container">
+                        <canvas id="segmentRevenuePieChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q1 FY26 数据中心营收构成</h3>
+                    <div class="chart-container">
+                        <canvas id="dataCenterRevenuePieChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q1 FY26 各业务YoY增长率</h3>
+                    <div class="chart-container">
+                        <canvas id="yoyGrowthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-sm leading-relaxed mb-4">
+                <p class="mb-2"><strong>按可报告分部划分的营收 (Revenue by Reportable Segments)</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>Compute & Networking：Q1 FY26营收<span class="highlight-num">$395.89亿</span> (yoy <span class="highlight-num">+75%</span>, qoq <span class="highlight-num">+10%</span>) (vs. con. <span class="highlight-num">$383.50亿</span>)。<strong>超出共识。</strong></li>
+                    <li>Graphics：Q1 FY26营收<span class="highlight-num">$44.73亿</span> (yoy <span class="highlight-num">+33%</span>, qoq <span class="highlight-num">+36%</span>) (vs. con. <span class="highlight-num">$49.63亿</span>)。<strong>低于共识。</strong></li>
+                </ul>
+                <p class="mb-2"><strong>按市场平台划分的营收 (Revenue by Market Platform)</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li><strong>数据中心</strong>：Q1 FY26营收<span class="highlight-num">$391.12亿</span> (yoy <span class="highlight-num">+73%</span>, qoq <span class="highlight-num">+10%</span>) (vs. con. <span class="highlight-num">$392.85亿</span>)。<strong>基本符合共识。</strong>
+                        <ul class="list-circle list-inside ml-4">
+                            <li>强劲的YoY和QoQ增长由用于Large Language Models、推荐引擎以及生成式和代理式AI应用的加速计算平台需求驱动。</li>
+                            <li>Blackwell架构扩展至所有客户类别，大型Cloud Service Provider仍是最大客户群，占数据中心营收近<span class="highlight-num">50%</span>。</li>
+                            <li><strong>Blackwell平台贡献</strong>：Blackwell的爬坡速度为公司历史上最快，贡献了本季度数据中心计算收入的近<span class="highlight-num">70%</span>，从Hopper的过渡已基本完成。</li>
+                            <li><strong>推理需求增长</strong>：OpenAI、Microsoft和Google的token生成量均出现阶梯式飞跃。Microsoft在Q1处理了超过<span class="highlight-num">100,000,000,000,000</span>个token，同比增长五倍。</li>
+                            <li><strong>AI工厂部署加速</strong>：本季度有近<span class="highlight-num">100</span>个由NVIDIA驱动的AI工厂正在进行中，同比增长一倍，平均GPU数量也翻了一番。</li>
+                            <li><strong>Agentic AI 过渡</strong>：NVIDIA推出LAMA Nemotron系列开放推理模型支持企业Agentic AI平台。</li>
+                            <li><strong>数据中心计算 (Compute) 营收</strong>：<span class="highlight-num">$341.55亿</span> (yoy <span class="highlight-num">+76%</span>, qoq <span class="highlight-num">+5%</span>) (vs. con. <span class="highlight-num">$354.72亿</span>)。<strong>低于共识。</strong></li>
+                            <li><strong>数据中心网络 (Networking) 营收</strong>：<span class="highlight-num">$49.57亿</span> (yoy <span class="highlight-num">+56%</span>, qoq <span class="highlight-num">+64%</span>) (vs. con. <span class="highlight-num">$34.52亿</span>)。<strong>显著超出共识，</strong> 受GB200系统中NVLink计算结构增长以及Cloud Service Provider和消费互联网公司持续采用以太网AI解决方案的推动。</li>
+                            <li><strong>中国市场影响</strong>：由于H20出口许可管制，中国市场在数据中心收入中的占比略低于预期，并环比下降。预计Q2中国数据中心收入将大幅下降。</li>
+                            <li><strong>新加坡开票说明</strong>：尽管新加坡占Q1开票收入近<span class="highlight-num">20%</span>，但超过<span class="highlight-num">99%</span>的H100、H200和Blackwell数据中心计算收入来自美国客户订单。</li>
+                        </ul>
+                    </li>
+                    <li><strong>游戏</strong>：Q1 FY26营收<span class="highlight-num">$37.63亿</span> (yoy <span class="highlight-num">+42%</span>, qoq <span class="highlight-num">+48%</span>) (vs. con. <span class="highlight-num">$28.53亿</span>)。<strong>显著超出共识，创历史新高，</strong> 由Blackwell架构销售驱动，是公司历史上最快的上量。</li>
+                    <li><strong>专业可视化</strong>：Q1 FY26营收<span class="highlight-num">$5.09亿</span> (yoy <span class="highlight-num">+19%</span>, qoq持平) (vs. con. <span class="highlight-num">$5.06亿</span>)。<strong>基本符合共识。</strong> YoY增长由Ada Lovelace Ada RTX工作站GPU的更广泛采用驱动。</li>
+                    <li><strong>汽车电子</strong>：Q1 FY26营收<span class="highlight-num">$5.67亿</span> (yoy <span class="highlight-num">+72%</span>, qoq <span class="highlight-num">-1%</span>) (vs. con. <span class="highlight-num">$5.84亿</span>)。<strong>略低于共识。</strong> YoY增长由自动驾驶平台销售驱动。</li>
+                    <li><strong>OEM及其他</strong>：Q1 FY26营收<span class="highlight-num">$1.11亿</span> (yoy <span class="highlight-num">+42%</span>, qoq <span class="highlight-num">-12%</span>) (vs. con. <span class="highlight-num">$1.18亿</span>)。<strong>略低于共识。</strong></li>
+                </ul>
+            </div>
+
+            <div id="segments-kpis-table" class="mb-6">
+                <h3 class="text-lg font-semibold mb-2 main-orange">业务分部与关键指标表</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-2 px-4 border-b text-left">Metrics ($M unless specified)</th>
+                                <th class="py-2 px-4 border-b text-left">Q1 FY26 Actual</th>
+                                <th class="py-2 px-4 border-b text-left">Q1 FY26 Consensus</th>
+                                <th class="py-2 px-4 border-b text-left">YoY</th>
+                                <th class="py-2 px-4 border-b text-left">QoQ</th>
+                                <th class="py-2 px-4 border-b text-left">Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="py-2 px-4 border-b"><strong>Data Center Revenue</strong></td><td class="py-2 px-4 border-b"><span class="highlight-num">39,112</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">39,285.16</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+73</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+10</span>%</td><td class="py-2 px-4 border-b">基本符合共识；Blackwell驱动</td></tr>
+                            <tr><td class="py-2 px-4 border-b">- Data Center Compute Revenue</td><td class="py-2 px-4 border-b"><span class="highlight-num">34,155</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">35,472.30</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+76</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+5</span>%</td><td class="py-2 px-4 border-b">低于共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b">- Data Center Networking Revenue</td><td class="py-2 px-4 border-b"><span class="highlight-num">4,957</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">3,452.30</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+56</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+64</span>%</td><td class="py-2 px-4 border-b"><strong>显著超出共识</strong>；NVLink和以太网驱动</td></tr>
+                            <tr><td class="py-2 px-4 border-b"><strong>Gaming Revenue</strong></td><td class="py-2 px-4 border-b"><span class="highlight-num">3,763</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">2,853.39</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+42</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+48</span>%</td><td class="py-2 px-4 border-b"><strong>显著超出共识，创纪录</strong>；Blackwell驱动</td></tr>
+                            <tr><td class="py-2 px-4 border-b"><strong>Pro Viz Revenue</strong></td><td class="py-2 px-4 border-b"><span class="highlight-num">509</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">505.76</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+19</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">0</span>%</td><td class="py-2 px-4 border-b">基本符合共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b"><strong>Automotive Revenue</strong></td><td class="py-2 px-4 border-b"><span class="highlight-num">567</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">584.23</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+72</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">-1</span>%</td><td class="py-2 px-4 border-b">略低于共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b"><strong>OEM & Other Revenue</strong></td><td class="py-2 px-4 border-b"><span class="highlight-num">111</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">117.68</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+42</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">-12</span>%</td><td class="py-2 px-4 border-b">略低于共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b"><strong>Reportable: Compute & Networking</strong></td><td class="py-2 px-4 border-b"><span class="highlight-num">39,589</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">38,349.63</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+75</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+10</span>%</td><td class="py-2 px-4 border-b">超出共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b"><strong>Reportable: Graphics</strong></td><td class="py-2 px-4 border-b"><span class="highlight-num">4,473</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">4,962.52</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+33</span>%</td><td class="py-2 px-4 border-b"><span class="highlight-num">+36</span>%</td><td class="py-2 px-4 border-b">低于共识</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 p-4 rounded-md mb-4 border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">Revenue by Reportable Segments</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li><strong>Compute & Networking</strong> 营收为 <span class="highlight-num">$39,589</span>百万，同比增长 <span class="highlight-num">75%</span>，环比增长 <span class="highlight-num">10%</span>。</li>
+                    <li><strong>Graphics</strong> 营收为 <span class="highlight-num">$4,473</span>百万，同比增长 <span class="highlight-num">33%</span>，环比增长 <span class="highlight-num">36%</span>。</li>
+                </ul>
+            </div>
+            <div class="bg-gray-100 p-4 rounded-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">Revenue by Market Platform</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li><strong>Data Center</strong> 营收为 <span class="highlight-num">$39,112</span>百万，同比增长 <span class="highlight-num">73%</span>，环比增长 <span class="highlight-num">10%</span>。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>其中 Compute 营收 <span class="highlight-num">$34,155</span>百万 (yoy <span class="highlight-num">+76%</span>, qoq <span class="highlight-num">+5%</span>)。</li>
+                            <li>其中 Networking 营收 <span class="highlight-num">$4,957</span>百万 (yoy <span class="highlight-num">+56%</span>, qoq <span class="highlight-num">+64%</span>)。</li>
+                        </ul>
+                    </li>
+                    <li><strong>Gaming</strong> 营收为 <span class="highlight-num">$3,763</span>百万，同比增长 <span class="highlight-num">42%</span>，环比增长 <span class="highlight-num">48%</span>。</li>
+                    <li><strong>Professional Visualization</strong> 营收为 <span class="highlight-num">$509</span>百万，同比增长 <span class="highlight-num">19%</span>，环比持平。</li>
+                    <li><strong>Automotive</strong> 营收为 <span class="highlight-num">$567</span>百万，同比增长 <span class="highlight-num">72%</span>，环比下降 <span class="highlight-num">1%</span>。</li>
+                    <li><strong>OEM and Other</strong> 营收为 <span class="highlight-num">$111</span>百万，同比增长 <span class="highlight-num">42%</span>，环比下降 <span class="highlight-num">12%</span>。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Outlooks or guidance Block -->
+        <div id="outlooks-guidance" class="content-block bg-gray-50 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-2xl font-bold mb-4 main-orange">展望与指引</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q2 FY26 营收指引对比</h3>
+                    <div class="chart-container">
+                        <canvas id="q2RevenueGuidanceChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Q2 FY26 毛利率指引对比 (Non-GAAP)</h3>
+                    <div class="chart-container">
+                        <canvas id="q2GMGuidanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-sm leading-relaxed mb-4">
+                <p class="mb-2"><strong>2Q FY26展望</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li><strong>营收 (Revenue)</strong>：预计为<span class="highlight-num">$450亿</span>，正负<span class="highlight-num">2%</span> (即<span class="highlight-num">$441亿</span> - <span class="highlight-num">$459亿</span>)。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>此展望反映了近期出口管制限制导致H20营收损失约<span class="highlight-num">$80亿</span>。</li>
+                            <li><strong>低于市场一致预期的<span class="highlight-num">$464.01亿</span>。</strong> 此点回应了卖方预览中关于FQ2营收指引面临显著下行风险的担忧。</li>
+                        </ul>
+                    </li>
+                    <li><strong>GAAP毛利率 (GAAP GM)</strong>：预计为<span class="highlight-num">71.8%</span>，正负<span class="highlight-num">50</span>个基点。</li>
+                    <li><strong>Non-GAAP毛利率 (Non-GAAP GM)</strong>：预计为<span class="highlight-num">72.0%</span>，正负<span class="highlight-num">50</span>个基点。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>与市场一致预期的<span class="highlight-num">72.04%</span>基本一致。</li>
+                            <li>公司持续努力在今年晚些时候实现<span class="highlight-num">70%</span>区间中段的毛利率目标。此点回应了卖方预览中关于毛利率中长期走向的关注。</li>
+                        </ul>
+                    </li>
+                    <li><strong>GAAP运营费用 (GAAP OpEx)</strong>：预计约为<span class="highlight-num">$57亿</span>。</li>
+                    <li><strong>Non-GAAP运营费用 (Non-GAAP OpEx)</strong>：预计约为<span class="highlight-num">$40亿</span>。
+                        <ul class="list-circle list-inside ml-4">
+                            <li>高于市场一致预期的<span class="highlight-num">$38.62亿</span>。</li>
+                        </ul>
+                    </li>
+                    <li><strong>全年FY26运营费用增长</strong>：预计在<span class="highlight-num">30%</span>区间中段。</li>
+                    <li><strong>GAAP及Non-GAAP其他收入和支出 (Other Income & Expense)</strong>：预计约为<span class="highlight-num">$4.5亿</span>的收入 (不包括非市场化和公开持有股权证券的收益和损失)。</li>
+                    <li><strong>GAAP及Non-GAAP税率 (Tax Rates)</strong>：预计为<span class="highlight-num">16.5%</span>，正负<span class="highlight-num">1%</span> (不包括任何离散项目)。</li>
+                </ul>
+                <p class="mb-2"><strong>卖方预览关注点回应</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li><strong>FQ2营收指引面临显著下行风险</strong>：财报指引明确指出因H20禁令导致营收损失约<span class="highlight-num">$80亿</span>，使得指引低于市场共识，证实了卖方担忧。</li>
+                    <li><strong>毛利率的中长期走向</strong>：公司重申今年晚些时候达到mid-<span class="highlight-num">70%</span>毛利率的目标。</li>
+                </ul>
+                <p class="mb-2"><strong>增长驱动力分析 (来自业绩电话会Q&A - Jensen Huang)</strong>: 与年初及GTC时相比，有四个积极的意外惊喜（positive surprises）：</p>
+                <ol class="list-decimal list-inside ml-4 mb-2">
+                    <li><strong>推理AI（Reasoning AI）需求的阶梯式增长</strong>：AI正经历指数级增长，推理AI突破了人们对其能力的疑虑，智能体AI（agentic AI）是颠覆性的。</li>
+                    <li><strong>AI diffusion规则被撤销</strong>：President Trump希望United States获胜，并认识到需要将美国的技术栈推广到全球。这恰逢全球各国意识到AI作为基础设施的重要性。</li>
+                    <li><strong>企业AI（Enterprise AI）蓄势待发</strong>：智能体表现出色，远超生成式AI。Nvidia推出了RTX Pro enterprise server（在Computex发布），整合了计算、存储和网络三大支柱，几乎所有主要IT公司都已加入合作。</li>
+                    <li><strong>工业AI（Industrial AI）</strong>：全球制造业回流（onshoring）和建厂潮，为NVIDIA Omniverse、AI和机器人技术提供了发展时机。每个工厂都将有关联的AI工厂，创建物理AI系统需要大量数据训练。</li>
+                </ol>
+                <p class="mb-2">这四个驱动因素正进入“涡轮增压”（turbocharge）状态。</p>
+            </div>
+
+            <div id="guidance-table" class="mb-6">
+                <h3 class="text-lg font-semibold mb-2 main-orange">指引数据表 (Q2 FY26)</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 text-sm">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-2 px-4 border-b text-left">Company Guidance (Q2 FY26)</th>
+                                <th class="py-2 px-4 border-b text-left">指引值 (Guidance)</th>
+                                <th class="py-2 px-4 border-b text-left">Sell-side Consensus (Q2 FY26)</th>
+                                <th class="py-2 px-4 border-b text-left">QoQ (vs Q1FY26 Actual, Mid-Point)</th>
+                                <th class="py-2 px-4 border-b text-left">Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="py-2 px-4 border-b">Revenue ($M)</td><td class="py-2 px-4 border-b"><span class="highlight-num">45,000</span> (±<span class="highlight-num">2</span>%)</td><td class="py-2 px-4 border-b"><span class="highlight-num">46,401.13</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+2.1</span>%</td><td class="py-2 px-4 border-b"><strong>低于共识</strong>；含约<span class="highlight-num">$80亿</span> H20营收损失</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Gross Margin (GAAP, %)</td><td class="py-2 px-4 border-b"><span class="highlight-num">71.8</span> (±<span class="highlight-num">50</span>bps)</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"><span class="highlight-num">+11.3</span> pts</td><td class="py-2 px-4 border-b"></td></tr>
+                            <tr><td class="py-2 px-4 border-b">Gross Margin (Non-GAAP, %)</td><td class="py-2 px-4 border-b"><span class="highlight-num">72.0</span> (±<span class="highlight-num">50</span>bps)</td><td class="py-2 px-4 border-b"><span class="highlight-num">72.04</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+11.0</span> pts</td><td class="py-2 px-4 border-b">与共识基本一致；目标年底达到mid-<span class="highlight-num">70</span>%</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Operating Expenses (GAAP, $M)</td><td class="py-2 px-4 border-b">~<span class="highlight-num">5,700</span></td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"><span class="highlight-num">+13.3</span>%</td><td class="py-2 px-4 border-b"></td></tr>
+                            <tr><td class="py-2 px-4 border-b">Operating Expenses (Non-GAAP, $M)</td><td class="py-2 px-4 border-b">~<span class="highlight-num">4,000</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">3,862.45</span></td><td class="py-2 px-4 border-b"><span class="highlight-num">+11.6</span>%</td><td class="py-2 px-4 border-b">高于共识</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Other Income & Expense (GAAP/Non-GAAP, $M)</td><td class="py-2 px-4 border-b">~<span class="highlight-num">450</span> (Income)</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b">不包括非市场化和公开持有股权证券的收益和损失</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Tax Rate (GAAP/Non-GAAP, %)</td><td class="py-2 px-4 border-b"><span class="highlight-num">16.5</span> (±<span class="highlight-num">1</span>%)</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b">不包括任何离散项目</td></tr>
+                            <tr><td class="py-2 px-4 border-b">Full Year FY26 OpEx Growth (%)</td><td class="py-2 px-4 border-b">Mid-<span class="highlight-num">30</span>% range</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b">N/A</td><td class="py-2 px-4 border-b"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-gray-100 p-4 rounded-md border border-gray-200">
+                <h3 class="text-lg font-semibold mb-2 main-orange">NVIDIA CORPORATION RECONCILIATION OF GAAP TO NON-GAAP OUTLOOK</h3>
+                <ul class="list-disc list-inside text-sm leading-relaxed">
+                    <li><strong>Q2 FY2026展望中GAAP与Non-GAAP的调节差异</strong>：
+                        <ul class="list-circle list-inside ml-4">
+                            <li>毛利率：Non-GAAP较GAAP高 <span class="highlight-num">0.2%</span>，主要剔除了股票薪酬费用、收购相关成本和其他成本的影响。</li>
+                            <li>运营费用：Non-GAAP较GAAP低 <span class="highlight-num">$1,700</span>百万，主要剔除了股票薪酬费用、收购相关成本和其他成本。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Other Important Information Block -->
+        <div id="other-important-information" class="content-block bg-gray-50 rounded-lg shadow-md border border-gray-200">
+            <h2 class="text-2xl font-bold mb-4 main-orange">其他重要信息</h2>
+            <div class="text-sm leading-relaxed mb-4">
+                <p class="mb-2"><strong>CEO Jensen Huang评论 (来自财报新闻稿)</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>突破性的Blackwell NVL72 AI超级计算机（为推理设计的“思考机器”）现已在系统制造商和Cloud Service Provider中全面投产。</li>
+                    <li>全球对Nvidia AI基础设施的需求非常强劲。</li>
+                    <li>AI推理token生成量在一年内激增十倍，随着AI代理成为主流，对AI计算的需求将加速。</li>
+                    <li>世界各国都认识到AI是与电力和互联网同等重要的基础设施，而Nvidia处于这一深刻变革的中心。</li>
+                </ul>
+                <p class="mb-2"><strong>CFO Colette Kress评论细节 (来自财报CFO Commentary)</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li><strong>营收</strong>：数据中心的强劲增长得益于对加速计算平台的需求，用于Large Language Models、推荐引擎和生成式/代理式AI应用。Blackwell架构扩展到所有客户类别，大型Cloud Service Provider仍是最大的客户群，占数据中心营收的近<span class="highlight-num">50%</span>。网络营收的增长得益于GB200系统中NVLink计算网络以及Cloud Service Provider和消费互联网公司对AI解决方案中以太网的持续采用。游戏营收创纪录，得益于Blackwell架构的销售，这是公司历史上最快的增长。</li>
+                    <li><strong>毛利率</strong>：Q1毛利率同比和环比均下降，主要由于<span class="highlight-num">$45亿</span>的H20库存和采购承诺费用，以及数据中心内部更复杂系统的初始爬坡。</li>
+                    <li><strong>费用</strong>：运营费用同比增长主要由于员工增长和薪酬增加带来的更高薪酬福利支出，以及新产品推出的计算、基础设施和工程开发成本。环比增长主要由于薪酬增加和员工增长。</li>
+                    <li><strong>其他收支和所得税</strong>：利息收入同比和环比均增长，反映现金、现金等价物和有价证券的增长。Q1净亏损<span class="highlight-num">$1.75亿</span>，主要由于公开持有股权证券的亏损。GAAP有效税率Q1为<span class="highlight-num">14.3%</span>，Non-GAAP有效税率Q1为<span class="highlight-num">16.1%</span>。</li>
+                    <li><strong>资产负债表和现金流</strong>：现金、现金等价物和有价证券为<span class="highlight-num">$537亿</span>。应收账款<span class="highlight-num">$221亿</span>，DSO为<span class="highlight-num">46</span>天，环比下降。库存<span class="highlight-num">$113亿</span>，DSI为<span class="highlight-num">59</span>天。库存和制造能力的采购承诺和义务为<span class="highlight-num">$298亿</span>。其他非库存采购义务为<span class="highlight-num">$137亿</span>，包括<span class="highlight-num">$106亿</span>的多年云服务协议。经营活动现金流为<span class="highlight-num">$274亿</span>。通过股票回购<span class="highlight-num">$141亿</span>和现金股息<span class="highlight-num">$2.44亿</span>向股东回报现金<span class="highlight-num">$143亿</span>。预计Q2现金税将大幅增加。</li>
+                </ul>
+                <p class="mb-2"><strong>各业务领域亮点 (Highlights from Earnings Release & Management Comment)</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li><strong>数据中心</strong>：Nvidia正在美国建设工厂并与合作伙伴在美国生产Nvidia AI超级计算机。(来自业绩电话会管理层评论 - Jensen Huang: 与Foxconn在休斯顿、Wistron在沃斯堡建厂，目标一年内实现从芯片到超算在美国制造。)推出NVIDIA Blackwell Ultra和NVIDIA Dynamo用于加速和扩展AI推理模型。与HUMAIN合作在沙特阿拉伯建设AI工厂。与G42, OpenAI, Oracle, SoftBank Group, Cisco等战略伙伴在阿布扎比推出下一代AI基础设施集群Stargate UAE。计划与Foxconn和台湾政府合作建设AI工厂超级计算机。(来自业绩电话会管理层评论 - Jensen Huang: 在Computex上宣布)通过NVIDIA RTX PRO Servers加速IT基础设施向企业AI工厂的转型。推出NVLink Fusion，供行业通过Nvidia的合作伙伴生态系统构建半定制AI基础设施。(来自业绩电话会管理层评论 - Colette Kress: 赋能ASIC提供商如MediaTek、Marvell、Alchip Technologies、Astera Labs及CPU供应商如Fujitsu、Qualcomm)宣布NVIDIA Spectrum-X和NVIDIA Quantum-X硅光子网络交换机，将AI工厂扩展至数百万GPU。推出基于NVIDIA Blackwell Ultra GPU的NVIDIA DGX SuperPOD，为代理式AI推理提供AI工厂超级计算。与Alphabet Google宣布联合计划，推进代理式AI解决方案、机器人技术和药物发现。Nvidia加速计算和推理软件与Oracle的AI基础设施集成。NVIDIA Blackwell云实例现已在AWS, Google Cloud, Microsoft Azure和Oracle Cloud Infrastructure上可用。NVIDIA Blackwell平台在最新的MLPerf推理结果中创下纪录，吞吐量提升高达<span class="highlight-num">30</span>倍。宣布NVIDIA DGX Cloud Lepton连接开发者与Nvidia的全球计算生态系统。发布具有推理能力的开放Llama Nemotron系列模型。(来自业绩电话会管理层评论 - Colette Kress)推出NVIDIA AI Data Platform，一个可定制的AI推理工作负载参考设计。宣布在日本开设研究中心，拥有世界上最大的量子研究超级计算机。</li>
+                    <li><strong>游戏和AI PC</strong>：推出NVIDIA GeForce RTX 5070和RTX 5060，起售价分别为桌面版<span class="highlight-num">$299</span>和笔记本电脑版<span class="highlight-num">$1,099</span>。(财报原文为RTX 5060和RTX 5060 Ti，管理层评论中确认)NVIDIA DLSS 4现已应用于超过<span class="highlight-num">125</span>款游戏。宣布Nintendo Switch 2由Nvidia处理器和AI驱动的DLSS提供支持，可实现高达4K游戏体验。推出NVIDIA RTX Remix modding平台，吸引超过<span class="highlight-num">200</span>万游戏玩家。</li>
+                    <li><strong>专业可视化</strong>：宣布NVIDIA RTX PRO Blackwell系列工作站和服务器。推出由NVIDIA Grace Blackwell平台驱动的NVIDIA DGX Spark和NVIDIA DGX Station个人AI超级计算机。Accenture, Ansys, Databricks, SAP, Schneider Electric与ETAP, Siemens等领先工业软件和服务提供商正在将NVIDIA Omniverse平台集成到其解决方案中。</li>
+                    <li><strong>汽车电子和机器人</strong>：与General Motors合作，使用NVIDIA Omniverse, NVIDIA Cosmos和NVIDIA DRIVE AGX开发下一代汽车、工厂和机器人。推出统一安全系统NVIDIA Halos。宣布全球首个开放式人形机器人基础模型NVIDIA Isaac GR00T N1，随后推出NVIDIA Isaac GR00T N1.5；NVIDIA Isaac GR00T-Dreams；以及NVIDIA Blackwell系统以加速人形机器人开发。发布新的NVIDIA Cosmos世界基础模型和物理AI数据工具。</li>
+                </ul>
+                <p class="mb-2"><strong>管理层战略观点 (来自业绩电话会 - Jensen Huang)</strong>:</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li><strong>出口管制问题</strong>: 中国是全球最大的AI市场之一，H20禁令终止了NVIDIA在中国的Hopper数据中心业务。公司正在对无法销售或重新利用的库存进行数十亿美元的减记。中国AI发展不会停止，问题在于这个市场是否会运行在美国平台上。保护中国芯片制造商免受美国竞争只会增强它们在国外的实力。美国政策基于中国无法制造AI芯片的错误假设。出口管制应加强美国平台，而非将人才推向竞争对手。</li>
+                    <li><strong>DeepSeek等模型</strong>: 来自中国的DeepSeek和QN是最好的开源AI模型之一。DeepSeek R1引入推理AI，推动推理需求激增。AI的规模效应定律依然稳固。当流行模型在美国平台上训练和优化时，美国就赢了。美国平台必须保持作为开源AI首选平台的地位。</li>
+                    <li><strong>在岸制造业</strong>: TSMC正在亚利桑那州建设<span class="highlight-num">6</span>个晶圆厂和<span class="highlight-num">2</span>个先进封装厂。Spill和Amcor也在亚利桑那州投资。NVIDIA与Foxconn在休斯顿、与Wistron在德州沃斯堡合作建厂制造AI超级计算机。目标一年内实现从芯片到超算在美国制造。</li>
+                    <li><strong>AI扩散规则</strong>: President Trump废除了AI扩散规则，并提出与可信赖伙伴共同推广美国AI技术。宣布了在沙特和阿联酋的AI基础设施项目。</li>
+                    <li><strong>主权AI</strong>: 每个国家都将AI视为下一次工业革命的核心。各国竞相建设国家AI平台。NVIDIA与Foxconn和台湾政府合作宣布台湾首家AI工厂。在瑞典启动了首个国家AI基础设施。日本、韩国、印度等多国也在建设国家AI工厂。主权AI是NVIDIA新的增长引擎。</li>
+                </ul>
+                <p class="mb-2"><strong>卖方预览关注点回应</strong>：</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li><strong>Blackwell供应爬坡速度、ODM良率</strong>：财报及电话会中多次提及Blackwell的“full-scale production”和“fastest ramp”，暗示供应和生产顺利。管理层评论中提到GB200 NVL制造良率已有显著改善。</li>
+                    <li><strong>中国市场应对策略</strong>：财报及电话会详细说明了H20禁令的影响和财务计提。Jensen Huang在Q&A中表示，当前限制非常严格，Hopper已无进一步削减空间，目前没有新（替代）产品可宣布，但正在考虑。</li>
+                    <li><strong>AI推理需求的持续性</strong>：CEO及CFO评论和数据中心业绩强劲增长均证实了AI推理需求的持续性，并强调其为新的增长引擎。</li>
+                    <li><strong>供应链瓶颈</strong>：未直接在财报中提及，但Blackwell的强劲上量和Jensen在Q&A中提到“公司正在增强供应链，并在美国本土建设，供应链未来几年将保持繁忙”，可能暗示供应链挑战得到一定程度缓解或管理。</li>
+                    <li><strong>未来产品过渡风险</strong>（如Rubin）：财报未涉及，但管理层评论中强调公司致力于年度产品迭代节奏，路线图已延伸至<span class="highlight-num">2028</span>年，并提及从GB200到Blackwell Ultra的平稳过渡经验。</li>
+                </ul>
+                <p class="mb-2"><strong>业绩电话会总结陈词 (来自业绩电话会 - Jensen Huang)</strong>:</p>
+                <ul class="list-disc list-inside ml-4 mb-2">
+                    <li>这是一个强劲新增长浪潮的开始，Grace Blackwell已全面投产。</li>
+                    <li>公司拥有多个重要的增长引擎：推理（Inference）需求激增；主权AI（Sovereign AI）；企业AI（Enterprise AI）；工业AI（Industrial AI）。</li>
+                    <li>AI的增长速度将超过以往任何平台转变。</li>
+                    <li>Blackwell旨在支持完整AI生命周期，训练需求持续上升，但推理正在爆炸式增长。</li>
+                    <li>公司下一阶段增长平台基础已就绪，可以规模化扩展。</li>
+                    <li>邀请参加GTC Paris，将讨论量子GPU计算、机器人化工厂和机器人。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart.js configuration and data
+        const chartColors = {
+            orange: '#FF8C00', // DarkOrange
+            blue: '#6495ED',   // CornflowerBlue
+            cadetBlue: '#AEC6CF', // Light grey-blue
+            lightGreen: '#90EE90', // Light green
+            plum: '#DDA0DD', // Light purple
+            gray: '#778899', // LightSlateGray
+            darkGray: '#696969' // DimGray
+        };
+
+        // Common Chart.js options
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    titleFont: {
+                        size: 12
+                    },
+                    bodyFont: {
+                        size: 10
+                    },
+                    padding: 8
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    },
+                    title: {
+                        display: true,
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 0,
+                        minRotation: 0,
+                        font: {
+                            size: 10
+                        }
+                    }
+                }
+            }
+        };
+
+        // Q1 FY26 Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['实际营收 ($M)', '市场共识 ($M)', '公司指引 ($M)'],
+                datasets: [{
+                    label: '营收',
+                    data: [44062, 43367.13, 43000],
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue
+                    ],
+                    borderColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { display: false }, // Hide legend for single dataset
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += '$' + context.parsed.y.toLocaleString() + 'M';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '金额 ($M)',
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ...commonChartOptions.scales.x,
+                        ticks: {
+                            ...commonChartOptions.scales.x.ticks,
+                            callback: function(value, index, values) {
+                                const label = this.getLabelForValue(value);
+                                if (label.includes('(')) { // Split for better readability
+                                    return label.split(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q1 FY26 Gross Margin Chart
+        const gmCtx = document.getElementById('gmChart').getContext('2d');
+        new Chart(gmCtx, {
+            type: 'bar',
+            data: {
+                labels: ['实际毛利率 (%)', '实际毛利率 (剔除H20) (%)', '市场共识 (%)', '公司指引 (%)'],
+                datasets: [{
+                    label: '毛利率',
+                    data: [61.0, 71.3, 71.04, 71.0],
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue,
+                        chartColors.lightGreen
+                    ],
+                    borderColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue,
+                        chartColors.lightGreen
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { display: false },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: '百分比 (%)',
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ...commonChartOptions.scales.x,
+                        ticks: {
+                            ...commonChartOptions.scales.x.ticks,
+                            callback: function(value, index, values) {
+                                const label = this.getLabelForValue(value);
+                                if (label.includes('(')) { // Split for better readability
+                                    return label.split(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q1 FY26 EPS Chart
+        const epsCtx = document.getElementById('epsChart').getContext('2d');
+        new Chart(epsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['实际EPS ($)', '实际EPS (剔除H20) ($)', '市场共识 ($)'],
+                datasets: [{
+                    label: 'EPS',
+                    data: [0.81, 0.96, 0.88],
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue
+                    ],
+                    borderColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { display: false },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += '$' + context.parsed.y.toFixed(2);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '每股收益 ($)',
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ...commonChartOptions.scales.x,
+                        ticks: {
+                            ...commonChartOptions.scales.x.ticks,
+                            callback: function(value, index, values) {
+                                const label = this.getLabelForValue(value);
+                                if (label.includes('(')) { // Split for better readability
+                                    return label.split(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q1 FY26 Shareholder Return Chart (Pie Chart)
+        const shareholderReturnCtx = document.getElementById('shareholderReturnChart').getContext('2d');
+        new Chart(shareholderReturnCtx, {
+            type: 'pie',
+            data: {
+                labels: ['股票回购 ($14.1B)', '现金股利 ($0.244B)'],
+                datasets: [{
+                    data: [14100, 244], // in millions
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += '$' + context.parsed.toLocaleString() + 'M';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q1 FY26 Segment Revenue Pie Chart
+        const segmentRevenuePieCtx = document.getElementById('segmentRevenuePieChart').getContext('2d');
+        new Chart(segmentRevenuePieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['数据中心 ($39.112B)', '游戏 ($3.763B)', '专业可视化 ($0.509B)', '汽车电子 ($0.567B)', 'OEM及其他 ($0.111B)'],
+                datasets: [{
+                    data: [39112, 3763, 509, 567, 111], // in millions
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue,
+                        chartColors.lightGreen,
+                        chartColors.plum
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += '$' + context.parsed.toLocaleString() + 'M';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q1 FY26 Data Center Revenue Pie Chart (Compute vs. Networking)
+        const dataCenterRevenuePieCtx = document.getElementById('dataCenterRevenuePieChart').getContext('2d');
+        new Chart(dataCenterRevenuePieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['数据中心计算 ($34.155B)', '数据中心网络 ($4.957B)'],
+                datasets: [{
+                    data: [34155, 4957], // in millions
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { position: 'bottom' },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += '$' + context.parsed.toLocaleString() + 'M';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q1 FY26 YoY Growth Chart
+        const yoyGrowthCtx = document.getElementById('yoyGrowthChart').getContext('2d');
+        new Chart(yoyGrowthCtx, {
+            type: 'bar',
+            data: {
+                labels: ['数据中心', '游戏', '专业可视化', '汽车电子', 'OEM及其他'],
+                datasets: [{
+                    label: 'YoY 增长率',
+                    data: [73, 42, 19, 72, 42],
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue,
+                        chartColors.lightGreen,
+                        chartColors.plum
+                    ],
+                    borderColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue,
+                        chartColors.lightGreen,
+                        chartColors.plum
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { display: false },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y.toFixed(0) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '增长率 (%)',
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ...commonChartOptions.scales.x,
+                        ticks: {
+                            ...commonChartOptions.scales.x.ticks,
+                            callback: function(value, index, values) {
+                                const label = this.getLabelForValue(value);
+                                if (label.includes('(')) { // Split for better readability
+                                    return label.split(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q2 FY26 Revenue Guidance Chart
+        const q2RevenueGuidanceCtx = document.getElementById('q2RevenueGuidanceChart').getContext('2d');
+        new Chart(q2RevenueGuidanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['公司指引 ($M)', '市场共识 ($M)'],
+                datasets: [{
+                    label: '营收指引',
+                    data: [45000, 46401.13],
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue
+                    ],
+                    borderColor: [
+                        chartColors.orange,
+                        chartColors.blue
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { display: false },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += '$' + context.parsed.y.toLocaleString() + 'M';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: '金额 ($M)',
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ...commonChartOptions.scales.x,
+                        ticks: {
+                            ...commonChartOptions.scales.x.ticks,
+                            callback: function(value, index, values) {
+                                const label = this.getLabelForValue(value);
+                                if (label.includes('(')) { // Split for better readability
+                                    return label.split(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Q2 FY26 GM Guidance Chart
+        const q2GMGuidanceCtx = document.getElementById('q2GMGuidanceChart').getContext('2d');
+        new Chart(q2GMGuidanceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['GAAP指引 (%)', 'Non-GAAP指引 (%)', '市场共识 (%)'],
+                datasets: [{
+                    label: '毛利率指引',
+                    data: [71.8, 72.0, 72.04],
+                    backgroundColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue
+                    ],
+                    borderColor: [
+                        chartColors.orange,
+                        chartColors.blue,
+                        chartColors.cadetBlue
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...commonChartOptions,
+                plugins: {
+                    ...commonChartOptions.plugins,
+                    legend: { display: false },
+                    tooltip: {
+                        ...commonChartOptions.plugins.tooltip,
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += context.parsed.y.toFixed(2) + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    ...commonChartOptions.scales,
+                    y: {
+                        ...commonChartOptions.scales.y,
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: '百分比 (%)',
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        ...commonChartOptions.scales.x,
+                        ticks: {
+                            ...commonChartOptions.scales.x.ticks,
+                            callback: function(value, index, values) {
+                                const label = this.getLabelForValue(value);
+                                if (label.includes('(')) { // Split for better readability
+                                    return label.split(' ');
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
